@@ -8,7 +8,4 @@ module BitrixWebhook
   extend Configuration
   define_setting :bitrix24_url
   define_setting :hook
-  define_setting :login, 'Please configure this file  /config/initializers/bitrix_webhook.rb'
-  define_setting :password, 'Please configure this file  /config/initializers/bitrix_webhook.rb'
-  # Your code goes here...
 end
