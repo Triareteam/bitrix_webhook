@@ -19,10 +19,33 @@ And then execute:
 Or install it yourself as:
 
     $ gem install bitrix_webhook
+    
+Then run:
+
+    $ rails g bitrix_webhook:config
+
+which will generate default settings files:
+
+    config/initializers/bitrix_webhook.rb
+
+Then configurate bitrix_webhook.rb file:
+
+```ruby
+BitrixWebhook.configuration do |config|
+  config.bitrix24_url = 'URL' # Like this b21-6l64i7.bitrix24.ru
+  config.hook = 'Hook' # Like this  ak75dm93k5eq8215
+end
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+Now available only **crm.lead.add** 
+
+*I'm sorry i didn't have time to write all methods.*
+
+```ruby
+BitrixWebhook::CRM::LEAD.add(fname:'Serhii',lname:'Danovskyi',phone:'+380675807873',email:'serhii.danovskyi@gamil.com')
+```
 
 ## Development
 
