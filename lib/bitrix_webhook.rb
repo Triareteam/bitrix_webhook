@@ -1,5 +1,6 @@
 require 'bitrix_webhook/version'
 require 'bitrix_webhook/config'
+require 'bitrix_webhook/crm'
 require 'net/http'
 require 'uri'
 
