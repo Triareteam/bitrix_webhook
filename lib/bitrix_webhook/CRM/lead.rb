@@ -14,7 +14,7 @@ module BitrixWebhook
       end
 
       def self.base_url(method)
-        "https://#{BitrixWebhook.bitrix24_url}/rest/#{BitrixWebhook.webhook_user}/#{ BitrixWebhook.hook}/crm.lead.#{method}.json?"
+        "https://#{BitrixWebhook.bitrix24_url}/rest/#{BitrixWebhook.webhook_user}/#{ BitrixWebhook.hook}/crm.lead.#{method}?"
       end
 
       def self.add(options = {})
@@ -29,6 +29,16 @@ module BitrixWebhook
             "fields%5BEMAIL%5D%5B0%5D%5BVALUE%5D=#{options[:email]}&" +
             "params%5BREGISTER_SONET_EVENT%5D=#{options[:register_sonet_event]}"
 
+        begin
+          JSON.parse(HTTP.post(post_url).body)
+        rescue => e
+          {error:e}.to_json
+        end
+      end
+
+
+      def self.update_one_filed(filed,value)
+        post_url =  base_url("update").to_s + "fields%5B#{filed}%5D=#{value}"
         begin
           JSON.parse(HTTP.post(post_url).body)
         rescue => e
