@@ -12,12 +12,12 @@ module BitrixWebhook; class Config
   class Configuration
     attr_accessor :bitrix24_url
     attr_accessor :hook
-    attr_accessor :webhook_hook_id
+    attr_accessor :webhook_user
 
     def initialize
       @bitrix24_url= 'bitrix24_url'
       @hook =  'hook'
-      @webhook_hook_id =  'id'
+      @webhook_user =  'id'
     end
   end
 end; end
