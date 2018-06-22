@@ -30,10 +30,24 @@ which will generate default settings files:
 
 Then configurate bitrix_webhook.rb file:
 
+Get webhook at  https://your-portal.bitrix24.ru/marketplace/hook
+
+You get https://your-portal/rest/your-webhook-id/your-webhook-key/profile/
+
+**https://your-portal.bitrix24.ru/rest/2/zdfmoz6nub3uacft/profile/**
+
+
+
+ config.bitrix24_url = your-portal.bitrix24.ru
+ config.hook = zdfmoz6nub3uacft
+ config.hook_id = 2
+ 
+
 ```ruby
 BitrixWebhook.configuration do |config|
   config.bitrix24_url = 'URL' # Like this b21-6l64i7.bitrix24.ru
   config.hook = 'Hook' # Like this  ak75dm93k5eq8215
+  config.hook_id = 'id' # Like this  1
 end
 ```
 

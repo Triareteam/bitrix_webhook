@@ -7,12 +7,12 @@ module BitrixWebhook
           lname: '',
           status_id: 'NEW',
           opened:  'Y',
-          assigned_by_id: 1,
+          assigned_by_id: BitrixWebhook.hook_id,
           register_sonet_event: 'Y',
       }
 
       def self.base_url(method)
-        "https://#{BitrixWebhook.bitrix24_url}/rest/1/#{ BitrixWebhook.hook}/crm.lead.#{method}.json?"
+        "https://#{BitrixWebhook.bitrix24_url}/rest/#{BitrixWebhook.hook_id}/#{ BitrixWebhook.hook}/crm.lead.#{method}.json?"
       end
 
       def self.add(options = {})
