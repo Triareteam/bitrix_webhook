@@ -8,5 +8,5 @@ module BitrixWebhook
   extend Configuration
   define_setting :bitrix24_url
   define_setting :hook
-  define_setting :hook_id
+  define_setting :webhook_hook_id
 end

@@ -12,7 +12,7 @@ module BitrixWebhook
       }
 
       def self.base_url(method)
-        "https://#{BitrixWebhook.bitrix24_url}/rest/#{BitrixWebhook.hook_id}/#{ BitrixWebhook.hook}/crm.lead.#{method}.json?"
+        "https://#{BitrixWebhook.bitrix24_url}/rest/#{BitrixWebhook.webhook_hook_id}/#{ BitrixWebhook.hook}/crm.lead.#{method}.json?"
       end
 
       def self.add(options = {})
