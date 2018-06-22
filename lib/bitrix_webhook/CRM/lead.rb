@@ -7,7 +7,7 @@ module BitrixWebhook
           lname: '',
           status_id: 'NEW',
           opened:  'Y',
-          assigned_by_id: BitrixWebhook.hook_id,
+          assigned_by_id: BitrixWebhook.webhook_hook_id,
           register_sonet_event: 'Y',
       }
 
