@@ -17,8 +17,8 @@ module BitrixWebhook
         "https://#{BitrixWebhook.bitrix24_url}/rest/#{BitrixWebhook.webhook_user}/#{ BitrixWebhook.hook}/crm.lead.#{method}?"
       end
 
-      def self.add(options = {})
-        options = config.merge(options )
+      def self.add(**options)
+        options.merge!(config)
         query_params = {
           'fields' =>
             { 'TITLE' => ' ',
@@ -43,7 +43,7 @@ module BitrixWebhook
       end
 
 
-      def self.update_one_filed(id,filed,value)
+      def self.update_one_filed(id, filed, value)
         query_params = {
           id: id,
           fields: {
