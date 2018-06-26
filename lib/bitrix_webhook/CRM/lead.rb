@@ -12,9 +12,9 @@ module BitrixWebhook
             fname: '',
             lname: '',
             status_id: 'NEW',
-            opened:  'Y',
+            opened: 'Y',
             assigned_by_id: BitrixWebhook.webhook_user,
-            register_sonet_event: 'Y',
+            register_sonet_event: 'Y'
           }
         end
 
