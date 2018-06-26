@@ -1,23 +1,29 @@
-module BitrixWebhook; class Config
+module BitrixWebhook
+  class Config
 
-  class << self
-    attr_accessor :configuration
-  end
+    class << self
+      attr_accessor :configuration
 
-  def self.configure
-    self.configuration ||= Configuration.new
-    yield(configuration)
-  end
+      def configure
+        self.configuration ||= Configuration.new
 
-  class Configuration
-    attr_accessor :bitrix24_url
-    attr_accessor :hook
-    attr_accessor :webhook_user
+        yield(configuration)
+      end
 
-    def initialize
-      @bitrix24_url= 'bitrix24_url'
-      @hook =  'hook'
-      @webhook_user =  'id'
     end
+
+    class Configuration
+      attr_accessor :bitrix24_url
+      attr_accessor :hook
+      attr_accessor :webhook_user
+
+      def initialize
+        @bitrix24_url = 'bitrix24_url'
+        @hook = 'hook'
+        @webhook_user = 'id'
+      end
+
+    end
+
   end
-end; end
+end
