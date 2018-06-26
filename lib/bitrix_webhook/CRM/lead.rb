@@ -40,13 +40,8 @@ module BitrixWebhook
           }.to_query
           post_url = base_url("add").to_s + query_params
 
-          begin
-            JSON.parse(HTTP.post(post_url).body)
-          rescue => e
-            {error:e}.to_json
-          end
+          request_url(post_url)
         end
-
 
         def update_one_filed(id, filed, value)
           query_params = {
@@ -57,10 +52,14 @@ module BitrixWebhook
           }.to_query
           post_url = base_url("update").to_s + query_params
 
+          request_url(post_url)
+        end
+
+        def request_url(post_url)
           begin
             JSON.parse(HTTP.post(post_url).body)
           rescue => e
-            {error:e}.to_json
+            { error: e }.to_json
           end
         end
 
