@@ -71,8 +71,8 @@ module BitrixWebhook
         end
       end
 
-      alias_method :update_one_field, :update_one_filed
-
     end
+
+    LEAD.singleton_class.send(:alias_method, :update_one_field, :update_one_filed)
   end
 end
