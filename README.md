@@ -53,13 +53,53 @@ end
 
 ## Usage
 
-Now available only **crm.lead.add** 
+###Available methods:
 
-*I'm sorry i didn't have time to write all methods.*
+####CRM Lead
+1. **add**
 
-```ruby
-BitrixWebhook::CRM::LEAD.add(fname:'Serhii',lname:'Danovskyi',phone:'+380675807873',email:'serhii.danovskyi@gamil.com')
-```
+    ```ruby
+    BitrixWebhook::CRM::LEAD.add(fname:'Serhii',lname:'Danovskyi',phone:'+380675807873',email:'serhii.danovskyi@gamil.com')
+    ```
+
+2. **get**
+
+    ```ruby
+        BitrixWebhook::CRM::LEAD.get(1)
+    ```
+
+2. **update one field**
+
+    ```ruby
+        BitrixWebhook::CRM::LEAD.update_one_field(1, :fname, 'Victor')
+    ```
+
+####CRM Deal
+1. **get**
+
+    ```ruby
+        BitrixWebhook::CRM::DEAL.get(1)
+    ```
+
+####CRM Status
+1. **list**
+
+    ```ruby
+        BitrixWebhook::CRM::STATUS.list
+    ```
+
+####Task Item
+1. **add**
+
+    ```ruby
+        BitrixWebhook::TASK::ITEM.add(responsible_id: 2, crm_user_id:11)
+    ```
+
+2. **getdata** by task_id
+
+    ```ruby
+        BitrixWebhook::CRM::DEAL.get(1)
+    ```
 
 ## Development
 
