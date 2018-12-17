@@ -13,10 +13,10 @@ module BitrixWebhook
       end
 
       def self.add(options = {})
-        options = config.merge(options )
+        options = config.merge(options)
         query_params = {
             fields: {
-                TITLE: 'created via Web Hooks at ' + DateTime.now.strftime('%FT%T%:z'),
+                TITLE: options[:title],
                 RESPONSIBLE_ID: options[:responsible_id],
                 DEADLINE: (DateTime.now + 1.day).strftime("%FT%T%:z"),
                 UF_CRM_TASK: ["D_#{options[:crm_user_id]}"]
