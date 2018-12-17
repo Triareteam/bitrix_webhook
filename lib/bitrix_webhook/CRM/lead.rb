@@ -19,15 +19,21 @@ module BitrixWebhook
 
       def self.add(options = {})
         options = config.merge(options )
-        post_url =  base_url("add").to_s + "fields%5BTITLE%5D=#{options[:fname].to_s + '+' + options[:lname].to_s}&" +
-            "fields%5BNAME%5D=#{options[:fname]}&" +
-            "fields%5BLAST_NAME%5D=#{options[:lname]}&" +
-            "fields%5BSTATUS_ID%5D=#{options[:status_id]}&" +
-            "fields%5BOPENED%5D=#{options[:opened]}&" +
-            "fields%5BASSIGNED_BY_ID%5D=#{options[:assigned_by_id]}&" +
-            "fields%5BPHONE%5D%5B0%5D%5BVALUE%5D=#{options[:phone]}&" +
-            "fields%5BEMAIL%5D%5B0%5D%5BVALUE%5D=#{options[:email]}&" +
-            "params%5BREGISTER_SONET_EVENT%5D=#{options[:register_sonet_event]}"
+        query_params = {
+            fields:
+                { TITLE: "#{options[:fname]} #{options[:lname]}",
+                  NAME: options[:fname],
+                  LAST_NAME: options[:lname],
+                  STATUS_ID: options[:status_id],
+                  OPENED: options[:opened],
+                  ASSIGNED_BY_ID: options[:assigned_by_id],
+                  PHONE: { '0': { VALUE: options[:phone] } },
+                  EMAIL: { '0': { VALUE: options[:email] } } },
+            params: {
+                REGISTER_SONET_EVENT: options[:register_sonet_event]
+            }
+        }.to_query
+        post_url = base_url('add').to_s + query_params
 
         begin
           JSON.parse(HTTP.post(post_url).body)
@@ -36,9 +42,28 @@ module BitrixWebhook
         end
       end
 
+      def self.get(id)
+        query_params = {
+          id: id
+        }.to_query
+        get_url = base_url('get').to_s + query_params
+        begin
+          JSON.parse(HTTP.get(get_url).body)
+        rescue => e
+          {error:e}.to_json
+        end
+      end
 
       def self.update_one_filed(id,filed,value)
-        post_url =  base_url("update").to_s + "id=#{id}&fields%5B#{filed}%5D=#{value}"
+        query_params = {
+            id: id,
+            fields: {
+                filed => value
+            }
+        }.to_query
+        post_url = base_url('update').to_s + query_params
+
+
         begin
           JSON.parse(HTTP.post(post_url).body)
         rescue => e
@@ -47,5 +72,7 @@ module BitrixWebhook
       end
 
     end
+
+    LEAD.singleton_class.send(:alias_method, :update_one_field, :update_one_filed)
   end
 end
