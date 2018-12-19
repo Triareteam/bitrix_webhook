@@ -93,6 +93,7 @@ end
 
     ```ruby
         BitrixWebhook::TASK::ITEM.add(title: 'Just a task title', responsible_id: 2, crm_user_id:11)
+        # 11 lead id in Bitrix
     ```
 
 2. **getdata** by task_id
