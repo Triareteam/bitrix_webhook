@@ -19,7 +19,7 @@ module BitrixWebhook
                 TITLE: options[:title],
                 RESPONSIBLE_ID: options[:responsible_id],
                 DEADLINE: (DateTime.now + 1.day).strftime("%FT%T%:z"),
-                UF_CRM_TASK: ["D_#{options[:crm_user_id]}"]
+                UF_CRM_TASK: ["L_#{options[:crm_user_id]}"]
             },
         }.to_query
         post_url = base_url('add').to_s + query_params
