@@ -31,6 +31,24 @@ module BitrixWebhook
         end
       end
 
+      def self.raw_add(options = {})
+        options = config.merge(options)
+        fields = {}
+        options.each_pair do |k,v|
+          fields.merge!({k.upcase => v})
+        end
+        query_params = {
+            fields: fields,
+        }.to_query
+        post_url = base_url('add').to_s + query_params
+
+        begin
+          JSON.parse(HTTP.post(post_url).body)
+        rescue => e
+          {error:e}.to_json
+        end
+      end
+
 
       def self.getdata(task_id)
         query_params = {

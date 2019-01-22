@@ -62,13 +62,13 @@ end
     BitrixWebhook::CRM::LEAD.add(fname:'Serhii',lname:'Danovskyi',phone:'+380675807873',email:'serhii.danovskyi@gamil.com')
     ```
 
-2. **get**
+1. **get**
 
     ```ruby
         BitrixWebhook::CRM::LEAD.get(1)
     ```
 
-2. **update one field**
+1. **update one field**
 
     ```ruby
         BitrixWebhook::CRM::LEAD.update_one_field(1, :fname, 'Victor')
@@ -96,7 +96,16 @@ end
         # 11 lead id in Bitrix
     ```
 
-2. **getdata** by task_id
+1. **raw_add**
+
+    Use the same fields like for Bitrix original add method for task
+
+    ```ruby
+        BitrixWebhook::TASK::ITEM.add(TITLE: 'Just a task title', RESPONSIBLE_ID: 2, UF_CRM_TASK: ["L_11"])
+            # 11 lead id in Bitrix
+    ```
+
+1. **getdata** by task_id
 
     ```ruby
         BitrixWebhook::CRM::DEAL.get(1)
